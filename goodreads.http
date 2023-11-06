@@ -1,5 +1,10 @@
-###
+GET http://localhost:3000/books/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjk5MjY5MDM3fQ.FFTMMFObM0LAv5EjAvUbUR0Mw5uvi6OdUHt6nsq3EPY
 
+
+
+
+###
 POST http://localhost:3000/users/
 Content-Type: application/json
 
@@ -13,11 +18,10 @@ Content-Type: application/json
 
 
 ###
-
 POST http://localhost:3000/login/
 Content-Type: application/json
 
 {
-    "username":"rahul12",
+    "username":"rahul123",
     "password": "rahul@456"
 }

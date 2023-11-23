@@ -27,25 +27,31 @@ const initializeDBAndServer = async () => {
 };
 initializeDBAndServer();
 
-// Get Books API
-app.get("/books/", async (request, response) => {
+//middleware function
+const authenticateToken = async (request, response, next) => {
   let jwtToken;
-
-  const authHeader = request.headers["authorization"]; // Authorization=authorization
-
+  const authHeader = request.headers["authorization"];
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(" ")[1];
   }
-
-  if (authHeader === undefined) {
-    response.status(400);
-    response.send("Please provide access token");
+  if (jwtToken === undefined) {
+    response.status(401);
+    response.send("Invalid Access Token");
   } else {
-    //secret_key should be same provided as login API
-    jwt.verify(jwtToken, "secret_key", async (error, payload) => {
+    jwt.verify(jwtToken, "MY_SECRET_TOKEN", async (error, payload) => {
       if (error) {
-        response.send("Invalid Access token");
+        response.send("Invalid Access Token");
       } else {
+        console.log(payload);
+        request.username = payload.username;
+        next();
+      }
+    });
+  }
+};
+
+// Get Books API
+app.get("/books/",authenticateToken, async (request, response) => {
         const getBooksQuery = `
                 SELECT
                     *
@@ -55,9 +61,6 @@ app.get("/books/", async (request, response) => {
                     book_id;`;
         const booksArray = await db.all(getBooksQuery);
         response.send(booksArray);
-      }
-    });
-  }
 });
 
 //Register User API

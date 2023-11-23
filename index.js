@@ -63,6 +63,21 @@ app.get("/books/",authenticateToken, async (request, response) => {
         response.send(booksArray);
 });
 
+//Get Book API
+app.get("/books/:bookId/", authenticateToken, async (request, response) => {
+  const { bookId } = request.params;
+  const getBookQuery = `
+      SELECT
+       *
+      FROM
+       book 
+      WHERE
+       book_id = ${bookId};
+    `;
+  const book = await db.get(getBookQuery);
+  response.send(book);
+});
+
 //Register User API
 app.post("/users/", async (request, response) => {
   const { username, name, password, gender, location } = request.body;

@@ -112,3 +112,16 @@ app.post("/login", async (request, response) => {
     }
   }
 });
+
+
+//Get user profile details API
+
+app.get("/profile/", authenticateToken, async (request, response) => {
+  const { username } = request;
+  console.log(username);
+  const getProfileQuery = `SELECT * FROM user WHERE username='${username}'`;
+  const userDetails = await db.get(getProfileQuery);
+  console.log(userDetails);
+  response.send(userDetails);
+});
+

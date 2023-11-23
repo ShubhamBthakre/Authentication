@@ -1,6 +1,9 @@
 GET http://localhost:3000/books/
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjk5MjY5MDM3fQ.FFTMMFObM0LAv5EjAvUbUR0Mw5uvi6OdUHt6nsq3EPY
 
+###
+GET http://localhost:3000/books/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNzAwNjcxMDIzfQ.BcGkkSMMiOAiwwz9MPrc2t-gAEoQ03SuWZVZHJpBWiM
 
 
 

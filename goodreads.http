@@ -25,3 +25,7 @@ Content-Type: application/json
     "username":"rahul123",
     "password": "rahul@456"
 }
+
+###
+GET http://localhost:3000/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNzAwNjcxMDIzfQ.BcGkkSMMiOAiwwz9MPrc2t-gAEoQ03SuWZVZHJpBWiM
